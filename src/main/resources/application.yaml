@@ -1,0 +1,31 @@
+spring:
+  application:
+    name : SLM
+
+  datasource:
+    url: ${DATABASE_URL:jdbc:mysql://localhost:3306/slm}
+    username: ${DATABASE_USERNAME:root}
+    password: ${DATABASE_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+  profiles:
+    active: ${SPRING_PROFILES_TYPE:batch}
+
+server:
+  port: ${SERVER_PORT:8081}
+  tomcat:
+    threads:
+      max: 200
+
+short:
+  url:
+    salt: ${SALT_SECRET:123456}
